@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+# You know like gems and stuff
 gem 'rails', '4.0.0'              # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'sqlite3'                     # Use sqlite3 as the database for Active Record
 gem 'sass-rails', '~> 4.0.0'      # Use SCSS for stylesheets
@@ -8,7 +8,7 @@ gem 'uglifier', '>= 1.3.0'        # Use Uglifier as compressor for JavaScript as
 gem 'coffee-rails', '~> 4.0.0'    # Use CoffeeScript for .js.coffee assets and views
 gem 'jquery-rails'                # Use jquery as the JavaScript library
 gem 'jbuilder', '~> 1.2'          # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'pi_piper',  :group => :production
+gem 'pi_piper', :git => 'git@github.com:bguest/pi_piper.git', :branch => 'stub-driver'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
