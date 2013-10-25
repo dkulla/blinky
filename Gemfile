@@ -29,3 +29,4 @@ end
 
 # Use thin as the app server
 gem 'thin'
+gem 'capistrano', '~> 3.0.0'
