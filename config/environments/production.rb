@@ -15,13 +15,13 @@ Blinky::Application.configure do
   config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
 
+  config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'
   config.serve_static_assets = false    # Disable Rails's static asset server (Apache or nginx will already do this).
   config.cache_classes = true           # Code is not reloaded between requests.
   config.assets.compile = false         # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.digest = true           # Generate digests for assets URLs.
-  config.assets.version = '1.0'         # Version of your assets, change this if you want to expire all your assets.
+  config.assets.version = '1.0.1'       # Version of your assets, change this if you want to expire all your assets.
   config.log_level = :info              # Set to :debug to see everything in the log.
-
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found).
@@ -35,7 +35,7 @@ Blinky::Application.configure do
 
   config.log_formatter = ::Logger::Formatter.new    # Use default logging formatter so that PID and timestamp are not suppressed.
 
-  config.pi_piper_driver = PiPiper::Bcm2835
+  config.pi_piper_driver = nil
 end
 
 # Enable Rack::Cache to put a simple HTTP cache in front of your application

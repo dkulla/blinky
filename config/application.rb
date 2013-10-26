@@ -21,5 +21,6 @@ module Blinky
     # config.i18n.default_locale = :de
 
     config.pi_piper_driver = PiPiper::StubDriver.new(:logger => Logger.new(STDOUT))
+    config.assets.initialize_on_precompile = false
   end
 end

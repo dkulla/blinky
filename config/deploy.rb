@@ -3,8 +3,10 @@ set :repo_url, 'git@bitbucket.org:Intentss/blinky.git'
 
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
-# set :deploy_to, '/var/www/my_app'
-# set :scm, :git
+set :deploy_to, '/var/www/blinky'
+#set :repository,  "."
+#set :deploy_via, :copy
+set :scm, :git
 
 # set :format, :pretty
 # set :log_level, :debug
@@ -23,8 +25,13 @@ namespace :deploy do
     on roles(:app), in: :sequence, wait: 5 do
       # Your restart mechanism here, for example:
       # execute :touch, release_path.join('tmp/restart.txt')
+      #execute 'cd /var/www/blinky/current && bundle exec /etc/init.d/thin restart'
+      execute '/etc/init.d/thin restart'
+      execute 'sudo /etc/init.d/nginx reload'
+      execute 'sudo /etc/init.d/nginx restart'
     end
   end
+
 
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
