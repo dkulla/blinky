@@ -19,9 +19,9 @@ set :stage, :production
 # definition into the server list. The second argument
 # something that quacks like a has can be used to set
 # extended properties on the server.
-set :admin_runner, "pi"
+set :admin_runner, "root"
 server 'raspberrypi.local',
-       user: 'pi',
+       user: 'root',
        roles: %w{web app},
        use_sudo: true
 
