@@ -1,14 +1,14 @@
 set :application, 'blinky'
-#set :repo_url, 'git@bitbucket.org:Intentss/blinky.git'
+set :repo_url, 'git@bitbucket.org:Intentss/blinky.git'
 
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
 set :deploy_to, '/var/www/blinky'
-set :deploy_via, :copy
 set :scm, :git
-set :repository,  "."
-set :local_repository, "."
-set :branch, "master"
+#set :deploy_via, :copy
+#set :repository,  "."
+#set :local_repository, "."
+#set :branch, "master"
 
 # set :format, :pretty
 # set :log_level, :debug
