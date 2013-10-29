@@ -25,7 +25,7 @@ server 'raspberrypi.local',
        roles: %w{web app},
        use_sudo: true
 
-set :rvm_ruby_string, :local              # use the same ruby as used locally for deployment
+#set :rvm_ruby_string, :local              # use the same ruby as used locally for deployment
 
 # you can set custom ssh options
 # it's possible to pass any option but you need to keep in mind that net/ssh understand limited list of options

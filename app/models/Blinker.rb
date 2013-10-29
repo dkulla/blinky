@@ -7,16 +7,16 @@ module Blinker
     @blinking = true
     Rails.logger.info("Blinking = #{@blinking}")
     pin.on
-    #Thread.new do
-    #  loop do
-    #    break unless @blinking
-    #    pin.on
-    #    sleep 1
-    #    pin.off
-    #    sleep 1
-    #    Rails.logger.info("Blink!")
-    #  end
-    #end
+    Thread.new do
+      loop do
+        break unless @blinking
+        pin.on
+        sleep 1
+        pin.off
+        sleep 1
+        Rails.logger.info("Blink!")
+      end
+    end
   end
 
   def pin
@@ -24,8 +24,8 @@ module Blinker
   end
 
   def stop
-    pin.off
     @blinking = false
+    pin.off
     Rails.logger.info("Blinking = #{@blinking}")
   end
 end

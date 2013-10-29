@@ -5,7 +5,7 @@ set :repo_url, 'git@bitbucket.org:Intentss/blinky.git'
 
 set :deploy_to, '/var/www/blinky'
 #set :repository,  "."
-#set :deploy_via, :copy
+set :deploy_via, :copy
 set :scm, :git
 
 # set :format, :pretty
