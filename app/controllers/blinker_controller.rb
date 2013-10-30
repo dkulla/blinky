@@ -10,4 +10,27 @@ class BlinkerController < ApplicationController
     render nothing: true
   end
 
+  def red
+    LedString.red!
+    render nothing: true
+  end
+
+  def green
+    LedString.green!
+    render nothing: true
+  end
+
+  def blue
+    LedString.blue!
+    render nothing: true
+  end
+
+  # color_blinker_index PUT /blinker/color(.:format) blinker#color
+  def color
+    LedString.push_color(params[:color])
+    render nothing: true
+  end
+
+
+
 end

@@ -1,4 +1,14 @@
-<h1>Blink02</h1>
+<h1>Blink03</h1>
 
 <%= link_to "Start", start_blinker_index_path, :method => :put, :remote => true %>
 <%= link_to "Stop", stop_blinker_index_path, :method => :put, :remote => true %>
+<%= link_to "Red", red_blinker_index_path, :method => :put, :remote => true %>
+<%= link_to "Green", green_blinker_index_path, :method => :put, :remote => true %>
+<%= link_to "Blue", blue_blinker_index_path, :method => :put, :remote => true %>
+
+<div>
+  <%= form_tag color_blinker_index_path, :method => :put, :remote => true %>
+  <%= color_field_tag :color %>
+  <%= submit_tag 'Push Color' %>
+</div>
+

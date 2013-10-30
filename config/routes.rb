@@ -4,9 +4,12 @@ Blinky::Application.routes.draw do
     collection do
       put 'start'
       put 'stop'
+      put 'red'
+      put 'green'
+      put 'blue'
+      put 'color'
     end
   end
-
 
  root 'blinker#index'
 end
