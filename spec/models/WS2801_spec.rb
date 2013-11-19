@@ -21,12 +21,12 @@ describe WS2801 do
 
   it 'should send red to platform driver' do
     WS2801.any_instance.expects(:to_piper).with([255, 0, 0, 255, 0, 0, 255, 0, 0])
-    WS2801.new(:length => 3, :red => 255)
+    WS2801.new(:length => 3, :red => 255).push!
   end
 
   it 'should set all pixels to new color' do
     leds = WS2801.new(:length => 3)
-    leds.color = Color::RGB.new(0, 33, 200)
+    leds.set_color Color::RGB.new(0, 33, 200)
     leds.pixels[2].blue.should == 200
   end
 

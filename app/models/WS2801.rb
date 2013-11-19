@@ -5,7 +5,7 @@ class Color::RGB
   end
 end
 
-# Represents a GPIO pin on the Raspberry Pi
+# String of WS2801
 class WS2801
 
   attr_accessor :pixels
@@ -24,6 +24,8 @@ class WS2801
     @length = @options[:length]
     @logger = @options[:logger]
     range = (@options[:range] == :all ? (0..@length-1) : @options[:range])
+
+    # Set Initial State
     @pixels = Array.new(@length, Color::RGB.new(0,0,0)) # Array of colors
 
     range.each do |idx|
@@ -33,7 +35,6 @@ class WS2801
       p.blue = @options[:blue]
     end
 
-    push!
     self
   end
 
@@ -64,15 +65,11 @@ class WS2801
     push!
   end
 
-  def color=(color, range = :all)
-    range = (range = :all ? (0..@length - 1) : range)
+  def set_color(color, range = :all)
+    range = (range == :all ? (0..@length - 1) : range)
     range.each do |idx|
-      p = @pixels[idx]
-      p.red = color.red
-      p.green = color.green
-      p.blue = color.blue
+      @pixels[idx] = color
     end
-    push!
   end
 
   def push_color(color)
@@ -80,8 +77,6 @@ class WS2801
     @pixels.slice!(@length..-1)
     push!
   end
-
-
 
   # Set pixel to color
   #
@@ -96,7 +91,6 @@ class WS2801
   #         :g => (Integer)
   #         :b => (Integer)
   def set(opts = {})
-
 
   end
 

@@ -1,0 +1,122 @@
+# Represents a sixteen segment single letter, it looks like this
+
+#  --- 0 --- --- 1 ---
+# |\        |        /|
+# | \       |       / |
+# |  \      |      /  |
+# |   \     |     /   |
+# 2    3    4    5    6
+# |     \   |   /     |
+# |      \  |  /      |
+# |       \ | /       |
+# |        \|/        |
+#  --- 7 --- --- 8 ---
+# |        /|\        |
+# |       / | \       |
+# |      /  |  \      |
+# |     /   |   \     |
+# 9   10   11   12   13
+# |   /     |     \   |
+# |  /      |      \  |
+# | /       |       \ |
+# |/        |        \|
+#  -- 14 --- -- 15 ---
+
+class Letter < ActiveRecord::Base
+  belongs_to :sign
+  has_many :segments
+
+  serialize :segment_order, Array
+
+  after_initialize :init
+
+  CONVERSION = {
+    :'0' => [0,1,2,5,6,9,12,13,14,15],
+    :'1' => [5,6,13],
+    :'2' => [0,1,6,7,8,9,14,15],
+    :'3' => [0,1,6,8,13,14,15],
+    :'4' => [2,6,7,8,13],
+    :'5' => [0,1,2,7,8,13,14,15],
+    :'6' => [0,2,7,8,9,13,14,15],
+    :'7' => [0,1,6,13],
+    :'8' => [0,1,2,6,7,8,9,13,14,15],
+    :'9' => [0,1,2,6,7,8,13,15],
+
+    :'=' => [7,8,14,15],
+    :+ => [4,7,8,11],
+    :- => [7,8],
+    :* => [3,4,5,7,8,10,11,12],
+    :"'" => [5],
+    :'?' => [0,1,5,8,11],
+    :'(' => [5,12],
+    :')' => [3,10],
+    :'[' => [1,4,11,15],
+    :']' => [0,4,11,14],
+    :'.' => [11],
+    :/ => [5,10],
+    :'$' => [0,1,2,4,7,8,11,13,14,15],
+
+    :A => [0,1,2,6,7,8,9,13],
+    :B => [0,1,2,5,7,8,9,13,14,15],
+    :C => [0,1,2,9,14,15],
+    :D => [0,1,4,6,11,13,14,15],
+    :E => [0,1,2,7,9,14,15],
+    :F => [0,1,2,7,9],
+    :G => [0,1,2,8,9,13,14,15],
+    :H => [3,6,7,8,9,13],
+    :I => [0,1,4,11,14,15],
+    :J => [7,9,13,14,15],
+    :K => [3,5,7,9,12],
+    :L => [3,9,14,15],
+    :M => [3,3,5,6,9,13],
+    :N => [3,3,6,9,12,13],
+    :O => [0,1,2,6,9,13,14,15],
+    :P => [0,1,2,6,7,8,9],
+    :Q => [0,1,2,6,9,12,13,14,15],
+    :R => [0,1,2,6,7,8,9,12],
+    :S => [0,1,2,7,8,13,14,15],
+    :T => [0,1,4,11],
+    :U => [3,6,9,13,14,15],
+    :V => [3,5,9,10],
+    :W => [3,6,9,10,12,14],
+    :X => [4,5,10,12],
+    :Y => [3,6,7,8,11],
+    :Z => [0,1,5,10,14,15]
+  }
+
+  def init
+    self.segment_order = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15] if segment_order.empty?
+
+    # Ensure letter has segment for each segment order
+    (segment_order - segments.collect(&:number)).each do |n|
+      segments << Segment.new(number: n)
+    end
+
+  end
+
+  def set(opts = {})
+    value = opts[:value]; color = opts[:color]
+    value_segments = CONVERSION[value.to_sym]
+    segments.each do |s|
+      if value_segments.include?(s.number)
+        s.color = color
+      else
+        s.color = Color::RGB::Black
+      end
+    end
+  end
+
+  # Returns segment coresponding to the diagram above
+  def segment_number(number)
+    s = Array(segments.where(number:number)).first
+    s || Array(segments.select{|ss| ss.number == number}).first
+  end
+
+  def ordered_segments
+    segment_order.collect{|n| segment_number(n)}
+  end
+
+
+
+
+end

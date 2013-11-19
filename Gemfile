@@ -21,9 +21,14 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-group :test do
+group :test, :development do
   gem 'rspec-rails', '~> 2.4'
   gem "mocha", :require => false
+  gem 'simplecov'
+end
+
+group :test do
+  gem 'mocha', :require => false
   gem 'simplecov'
 end
 
