@@ -14,6 +14,7 @@
 ActiveRecord::Schema.define(version: 3) do
 
   create_table "letters", force: true do |t|
+    t.integer  "number"
     t.text     "segment_order"
     t.integer  "sign_id"
     t.datetime "created_at"
@@ -32,6 +33,7 @@ ActiveRecord::Schema.define(version: 3) do
 
   create_table "signs", force: true do |t|
     t.text     "phrase"
+    t.text     "letter_order"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

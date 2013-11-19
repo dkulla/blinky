@@ -34,6 +34,9 @@ GEM
       multi_json (~> 1.3)
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
+    anjlab-bootstrap-rails (3.0.2.0)
+      railties (>= 3.0)
+      sass (>= 3.2)
     arel (4.0.1)
     atomic (1.1.14)
     builder (3.1.4)
@@ -125,6 +128,9 @@ GEM
       multi_json (~> 1.0)
       simplecov-html (~> 0.7.1)
     simplecov-html (0.7.1)
+    slim (2.0.2)
+      temple (~> 0.6.6)
+      tilt (>= 1.3.3, < 2.1)
     sprockets (2.10.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -139,6 +145,7 @@ GEM
       net-scp
       net-ssh
       term-ansicolor
+    temple (0.6.7)
     term-ansicolor (1.2.2)
       tins (~> 0.8)
     thin (1.6.1)
@@ -164,6 +171,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  anjlab-bootstrap-rails (~> 3.0.2.0)
   capistrano (~> 3.0.0)
   capistrano-bundler
   capistrano-rails
@@ -179,6 +187,7 @@ DEPENDENCIES
   sass-rails (~> 4.0.0)
   sdoc
   simplecov
+  slim
   sqlite3
   thin
   turbolinks

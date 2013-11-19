@@ -23,12 +23,12 @@
 #  -- 14 --- -- 15 ---
 
 class Letter < ActiveRecord::Base
+  after_initialize :init
+
   belongs_to :sign
-  has_many :segments
+  has_many :segments, :dependent => :destroy
 
   serialize :segment_order, Array
-
-  after_initialize :init
 
   CONVERSION = {
     :'0' => [0,1,2,5,6,9,12,13,14,15],
@@ -92,6 +92,25 @@ class Letter < ActiveRecord::Base
       segments << Segment.new(number: n)
     end
 
+  end
+
+  def set_segment_order(*args)
+    order = Array(args).flatten
+    curr_segments = segments.collect(&:number)
+
+    #Add Missing Segments
+    (order - curr_segments).each do |n|
+      segments << Segment.new(number:n)
+    end
+
+    #Subtract extra segments
+    (curr_segments - order).each do |n|
+      s = segment_number(n)
+      segments.delete(s)
+      s.delete
+    end
+
+    self.segment_order= order
   end
 
   def set(opts = {})

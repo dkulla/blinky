@@ -1,0 +1,17 @@
+ol.breadcrumb
+  li=link_to 'All Letters', letters_path
+  li.active Letter #{@letter.number}
+
+h1 Letters Setup
+table.table
+  thead: tr
+    th Segment #
+    th Segment Length
+  tbody
+    -@segments.each do |s|
+      =form_for s do |f|
+        tr
+          td=s.number
+          td=f.text_field :length, class:'form-control'
+          td
+            =f.submit "Update", class:'btn btn-primary'

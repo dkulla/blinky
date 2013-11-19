@@ -31,7 +31,4 @@ class Segment < ActiveRecord::Base
     led_string.set_color color, range
   end
 
-  def push!
-    led_string.push!
-  end
 end

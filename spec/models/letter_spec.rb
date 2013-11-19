@@ -26,6 +26,38 @@ describe Letter do
     end
   end
 
+  describe '#set_segment_order' do
+
+    context 'when segments are added' do
+      let(:letter) do
+        l = Letter.new(segment_order:[1,4])
+        l.set_segment_order(1,2,3,4)
+        l
+      end
+      it 'should have the right number of segments' do
+        letter.segments.size.should == 4
+      end
+      (1..4).to_a.each do |n|
+        it{letter.segment_number(n).number.should == n}
+      end
+    end
+
+    context 'when segments are subtracted' do
+      let(:letter) do
+        l = Letter.new(segment_order:[1,2,3,4])
+        l.set_segment_order [1,4]
+        l
+      end
+      it 'should have the right number of segments' do
+        letter.segments.size.should == 2
+      end
+      [1,4].each do |n|
+        it{letter.segment_number(n).number.should == n}
+      end
+      [2,3].each{|n| it{ expect(letter.segment_number(n)).to be_nil}}
+    end
+  end
+
   describe '#segement_number(number)' do
 
     it 'should return the correct number segment' do

@@ -38,33 +38,6 @@ class WS2801
     self
   end
 
-  def red=(value, opts = {:range => :all})
-    if opts[:range] == :all
-      @pixels.each do |p|
-        p.red = value
-      end
-    end
-    push!
-  end
-
-  def green=(value, opts = {:range => :all})
-    if opts[:range] == :all
-      @pixels.each do |p|
-        p.green = value
-      end
-    end
-    push!
-  end
-
-  def blue=(value, opts = {:range => :all})
-    if opts[:range] == :all
-      @pixels.each do |p|
-        p.blue = value
-      end
-    end
-    push!
-  end
-
   def set_color(color, range = :all)
     range = (range == :all ? (0..@length - 1) : range)
     range.each do |idx|

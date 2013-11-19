@@ -1,0 +1,27 @@
+ol.breadcrumb
+  li.active All Letters
+
+h1 Letters Setup
+
+table.table
+  thead
+    tr
+      th Letter #
+      th Segment Order
+      th Action
+  tbody
+    - @letters.each do |l|
+      = form_for l do |f|
+        tr
+          td= l.number
+          td= f.text_field :segment_order, class:'form-control'
+          td
+            = f.submit "Update", class:'btn btn-primary'
+            = link_to 'Edit', edit_letter_path(l), class:'btn btn-default'
+            = link_to 'Delete', letter_path(l), method:'delete', class: 'btn btn-danger'
+
+    = form_for @new_letter do |nl|
+      tr
+        td= @new_letter.number
+        td= nl.text_field :segment_order, class:'form-control'
+        td= nl.submit "Add Letter", class:'btn btn-primary'

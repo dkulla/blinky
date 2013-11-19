@@ -1,5 +1,13 @@
 Blinky::Application.routes.draw do
 
+  resources :letters do
+    collection do
+      put 'reload'
+    end
+  end
+
+  resources :segments, :only => :update
+
   resources :blinker, :only => [:index] do
     collection do
       put 'start'

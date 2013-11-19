@@ -4,10 +4,12 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0'              # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'sqlite3'                     # Use sqlite3 as the database for Active Record
 gem 'sass-rails', '~> 4.0.0'      # Use SCSS for stylesheets
+gem 'slim'                        # Slim Templates
 gem 'uglifier', '>= 1.3.0'        # Use Uglifier as compressor for JavaScript assets
 gem 'coffee-rails', '~> 4.0.0'    # Use CoffeeScript for .js.coffee assets and views
 gem 'jquery-rails'                # Use jquery as the JavaScript library
 gem 'jbuilder', '~> 1.2'          # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+gem 'anjlab-bootstrap-rails', '~> 3.0.2.0', :require => 'bootstrap-rails' # Bootstrap
 gem 'pi_piper', :git => 'git@github.com:bguest/pi_piper.git', :branch => 'stub-driver'
 gem 'color'
 

@@ -21,6 +21,10 @@ module LedString
     add_segments(segs)
   end
 
+  def add_sign(sign)
+    add_letters(sign.ordered_letters)
+  end
+
   def string
     @string ||= WS2801.new(:length => length)
   end
