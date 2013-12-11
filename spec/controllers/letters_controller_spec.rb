@@ -13,11 +13,11 @@ describe LettersController do
 
   describe "#create POST /letters(.:format)" do
 
-    let(:params){{:letter => {:segment_order => "[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]"}}}
+    let(:params){{:letter => {:segment_order => "[0,1,2,3,4,5,6,7,8,10,11,12,13,14,15]"}}}
 
     it 'should be able to create new letter' do
       post :create, params
-      Letter.first.segment_order.should == [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+      Letter.last.segment_order.should == [0,1,2,3,4,5,6,7,8,10,11,12,13,14,15]
     end
 
     it 'should flash error if cant save' do
@@ -63,6 +63,10 @@ describe LettersController do
     it 'should assign segments' do
       assigns(:segments).should == @letter.segments.order(:number)
     end
+
+    it 'should assign segment lengths' do
+      assigns(:segment_lengths).should == @letter.segment_lengths
+    end
   end
 
   describe '#destroy DELETE /letters/:id(.:format)' do
@@ -104,6 +108,26 @@ describe LettersController do
       put :reload
     end
 
+  end
+
+  # segment_lengths_letter
+  describe '#segment_lengths PUT /letters/:id/segment_lengths(.:format)' do
+    before :each do
+      @letter = Letter.new(id:'88', segment_order:[0,1,2])
+      Letter.stubs(:find).with('88').returns(@letter)
+      params = {id: '88', segment_lengths: '[3,4,5]'}
+      put :segment_lengths, params
+    end
+
+    it 'should redirect to letters index' do
+      response.should redirect_to edit_letter_path('88')
+    end
+
+    it 'should update letter segment lengths' do
+      @letter.segment_number(0).length.should == 3
+      @letter.segment_number(1).length.should == 4
+      @letter.segment_number(2).length.should == 5
+    end
   end
 
 

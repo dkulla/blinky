@@ -1,4 +1,17 @@
-Raspberry Pi
+#About
+
+This is the server side application used to control the 2014 Burning Man project "Segment 16". The server side application is a Rails 4 application that runs on nginx and thin. The application runs on a Raspberry Pi. The Raspberry Pi sends SPI signals to a string of WS2801 addressable multi colored LEDs. CAD Designs will be opensource as well as soon as the become available.
+
+Pictures of the project: https://www.facebook.com/media/set/?set=a.10101747777027690.1073741833.6906203&type=1&l=32b286d4ba
+
+The goal is to build between 10 and 20 of these huge 16 segment displays. When they are hooked together, anyone with a phone or computer can log into the supplied wireless network go to a website and submit phrases to be displayed on the sign. There will also be an iphone app that you can download to control the sign.
+
+#Contact
+benguest@gmail.com
+
+#Raspberry Pi
+
+The following is a bunch of stuff needed to configure your raspberry pi with nginx and thin so that it can run a web server
 
 ssh pi@raspberrypi.local
 sudo ifconfig <— ipaddress

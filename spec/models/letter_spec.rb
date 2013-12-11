@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: letters
+#
+#  id            :integer          not null, primary key
+#  number        :integer
+#  segment_order :text
+#  sign_id       :integer
+#  created_at    :datetime
+#  updated_at    :datetime
+#
+# Indexes
+#
+#  index_letters_on_sign_id  (sign_id)
+#
+
 require 'spec_helper'
 
 describe Letter do
@@ -74,14 +90,32 @@ describe Letter do
       it{ordered[2].number.should == 4}
       it{ordered[4].number.should == 3}
     end
+  end
 
+  describe '#segment_lengths' do
+    it 'should return an array of all the letters segment lengths' do
+      l = Letter.new(segment_order:[0,1,2])
+      l.ordered_segments.each_with_index{|s,i| s.length = i*2 }
+      l.segment_lengths.should == [0,2,4]
+    end
+  end
+
+  describe '#segment_lengths=' do
+    let(:letter) do
+      letter = Letter.new(segment_order:[0,1,2])
+      letter.segment_lengths = [5,4,3]
+      letter
+    end
+    it{letter.segment_number(0).length.should == 5}
+    it{letter.segment_number(1).length.should == 4}
+    it{letter.segment_number(2).length.should == 3}
   end
 
   describe '#set' do
     context 'should set letter to selected color' do
       before :each do
-        @letter = Letter.new()
-        LedString.new().add_letters(@letter)
+        @letter = Letter.new
+        LedString.new.add_letters(@letter)
         @letter.set(value: 'S', color: Color::RGB::Orange)
       end
 

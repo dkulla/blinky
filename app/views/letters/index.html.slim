@@ -25,3 +25,5 @@ table.table
         td= @new_letter.number
         td= nl.text_field :segment_order, class:'form-control'
         td= nl.submit "Add Letter", class:'btn btn-primary'
+
+= link_to "Push update to sign", reload_letters_path, :method => :put, class: 'btn btn-warning'

@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: segments
+#
+#  id        :integer          not null, primary key
+#  length    :integer
+#  number    :integer
+#  letter_id :integer
+#
+# Indexes
+#
+#  index_segments_on_letter_id  (letter_id)
+#
+
 require 'spec_helper'
 
 describe Segment do

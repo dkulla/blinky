@@ -1,5 +1,21 @@
-# Represents a sixteen segment single letter, it looks like this
+# == Schema Information
+#
+# Table name: letters
+#
+#  id            :integer          not null, primary key
+#  number        :integer
+#  segment_order :text
+#  sign_id       :integer
+#  created_at    :datetime
+#  updated_at    :datetime
+#
+# Indexes
+#
+#  index_letters_on_sign_id  (sign_id)
+#
 
+# Represents a sixteen segment single letter, it looks like this
+#
 #  --- 0 --- --- 1 ---
 # |\        |        /|
 # | \       |       / |
@@ -135,7 +151,19 @@ class Letter < ActiveRecord::Base
     segment_order.collect{|n| segment_number(n)}
   end
 
+  # Returns array of segment lengths
+  def segment_lengths
+    ordered_segments.collect{|s| s.length}
+  end
 
-
-
+  def segment_lengths=(*args)
+    lengths = Array(args[0]).flatten
+    segs = ordered_segments
+    seg_size = segs.size
+    lengths.each_with_index do |len, idx|
+      return if idx > seg_size
+      segs[idx].length = len
+    end
+    segs.map(&:save)
+  end
 end

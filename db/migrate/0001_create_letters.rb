@@ -1,9 +1,9 @@
 class CreateLetters < ActiveRecord::Migration
   def change
     create_table :letters do |t|
-      t.integer    :number
+      t.integer    :number, index: true
       t.text       :segment_order
-      t.belongs_to :sign, index: true
+      t.belongs_to :sign,   index: true
 
       t.timestamps
     end

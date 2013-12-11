@@ -31,6 +31,7 @@ end
 
 group :test do
   gem 'mocha', :require => false
+  gem 'zeus', '0.13.4.pre2'
   gem 'simplecov'
 end
 
@@ -45,5 +46,6 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-rvm'
   gem 'capistrano-bundler'
+  gem 'annotate', "~>2.6.0"
 end
 

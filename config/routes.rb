@@ -1,6 +1,10 @@
 Blinky::Application.routes.draw do
 
+  get "segments/update"
   resources :letters do
+    member do
+      put 'segment_lengths'
+    end
     collection do
       put 'reload'
     end

@@ -5,6 +5,17 @@ ol.breadcrumb
 h1 Letters Setup
 table.table
   thead: tr
+    th Letter #
+    th Segment Lengths
+  tbody
+    =form_tag(segment_lengths_letter_path, method: :put) do
+      tr
+        td= @letter.number
+        td=text_field_tag :segment_lengths, @segment_lengths.to_json, class:'form-control'
+        td=submit_tag "Update", class:'btn btn-warning'
+
+table.table
+  thead: tr
     th Segment #
     th Segment Length
   tbody

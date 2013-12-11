@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: signs
+#
+#  id           :integer          not null, primary key
+#  phrase       :text
+#  letter_order :text
+#  created_at   :datetime
+#  updated_at   :datetime
+#
+
 class Sign < ActiveRecord::Base
   after_initialize :init
   has_many :letters, :dependent => :destroy

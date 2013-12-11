@@ -22,6 +22,7 @@ class LettersController < ApplicationController
   def edit
     @letter = Letter.find(params[:id])
     @segments = @letter.segments.order(:number)
+    @segment_lengths = @letter.segment_lengths
   end
 
   #PATCH /letters/:id(.:format)
@@ -52,13 +53,26 @@ class LettersController < ApplicationController
   #PUT /letters/update(.:format)
   def reload
     LedString.new.add_sign(sign)
-    render nothing: true
+    flash[:success] = 'Sign has been updated.'
+    redirect_to letters_path
+  end
+
+  #segment_lengths_letter
+  #PUT /letters/:id/segment_lengths(.:format)
+  def segment_lengths
+    @letter = Letter.find(params[:id])
+    @letter.segment_lengths = JSON.parse(segment_lengths_params)
+    redirect_to edit_letter_path(@letter)
   end
 
   private
 
     def letter_params
       params.require(:letter).permit(:segment_order)
+    end
+
+    def segment_lengths_params
+      params.require(:segment_lengths)
     end
 
     def sign
