@@ -1,0 +1,11 @@
+h1 Sign#index
+table.table
+  thead: tr
+    th The Sign Says
+    th
+  tbody
+    tr
+      =form_tag(phrase_sign_index_path, :method => :put) do
+        td= text_field_tag :phrase, @phrase, class:'form-control'
+        td= submit_tag "Say It", class:'btn btn-primary'
+

@@ -21,6 +21,7 @@ class Segment < ActiveRecord::Base
 
   def init
     self.length  ||= 2
+    self.led_string ||= LedString
   end
 
   def start

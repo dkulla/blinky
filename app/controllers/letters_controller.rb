@@ -75,8 +75,4 @@ class LettersController < ApplicationController
       params.require(:segment_lengths)
     end
 
-    def sign
-      @sign ||= (Sign.first || Sign.create)
-    end
-
 end

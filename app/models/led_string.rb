@@ -9,6 +9,10 @@ module LedString
     self
   end
 
+  def new?
+    @segments.nil? || @segments.empty?
+  end
+
   def add_segments(*args)
     segments = Array(args).flatten
     segments.each{|s| s.led_string = self}

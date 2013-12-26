@@ -95,6 +95,22 @@ class Sign < ActiveRecord::Base
     letter_order.collect{|n| letter_number(n)}
   end
 
-  private
+  # Saves and pushes update to sign
+  #
+  def update
+    ok = self.save
+    update_letters  if ok
+    LedString.push! if ok
+    ok
+  end
+
+  # Pushes updates to letters
+  #
+  def update_letters
+    LedString.new.add_sign(self) if LedString.new?
+    ordered_letters.each_with_index do |letter, idx|
+      letter.set(:value => phrase[idx])
+    end
+  end
 
 end

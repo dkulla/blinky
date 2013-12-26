@@ -16,6 +16,12 @@ describe SegmentsController do
       @segment.length.should == 11
     end
 
+    it "should let user know if can't update segment" do
+      @segment.stubs(:update_attributes).returns false
+      put :update, new_params
+      flash[:error].should == 'Error updating segment.'
+    end
+
   end
 
 end

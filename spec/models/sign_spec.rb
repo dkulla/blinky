@@ -131,8 +131,14 @@ describe Sign do
     end
   end
 
-  describe '#set_phrase' do
-
+  describe '#update' do
+    it 'should save and push to LedString' do
+      sign = Sign.new(phrase:'Hi Mom', letter_order:[0,1,2,3])
+      LedString.new.add_sign(sign)
+      LedString.expects(:push!).at_least_once
+      sign.expects(:save).returns true
+      sign.update.should == true
+    end
   end
 
 end

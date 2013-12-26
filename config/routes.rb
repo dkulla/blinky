@@ -1,6 +1,11 @@
 Blinky::Application.routes.draw do
 
-  get "segments/update"
+  resources :sign, :only => :index do
+    collection do
+      put 'phrase'
+    end
+  end
+
   resources :letters do
     member do
       put 'segment_lengths'

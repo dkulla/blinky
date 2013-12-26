@@ -58,6 +58,8 @@ class Letter < ActiveRecord::Base
     :'8' => [0,1,2,6,7,8,9,13,14,15],
     :'9' => [0,1,2,6,7,8,13,15],
 
+    :''  => [],
+    :' ' => [],
     :'=' => [7,8,14,15],
     :+ => [4,7,8,11],
     :- => [7,8],
@@ -130,8 +132,8 @@ class Letter < ActiveRecord::Base
   end
 
   def set(opts = {})
-    value = opts[:value]; color = opts[:color]
-    value_segments = CONVERSION[value.to_sym]
+    value = opts[:value]; color = opts[:color] || Color::RGB::White
+    value_segments = CONVERSION[value.to_s.to_sym]
     segments.each do |s|
       if value_segments.include?(s.number)
         s.color = color

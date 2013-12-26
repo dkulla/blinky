@@ -72,7 +72,7 @@ class WS2801
   end
 
   def push!
-    #Platform.driver.ada_spi_out(@pixels.collect(&:to_a).flatten)
+    #Platform.driver.ada_spi_out(@pixels.collect(&:to_a).flatten) # if ada_spi_out worked
     array = self.to_a
     to_piper(array)
   end
