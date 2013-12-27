@@ -131,13 +131,13 @@ describe Sign do
     end
   end
 
-  describe '#update' do
+  describe '#push' do
     it 'should save and push to LedString' do
       sign = Sign.new(phrase:'Hi Mom', letter_order:[0,1,2,3])
       LedString.new.add_sign(sign)
-      LedString.expects(:push!).at_least_once
+      Effects::Manager.expects(:run).with(sign)
       sign.expects(:save).returns true
-      sign.update.should == true
+      sign.push.should == true
     end
   end
 

@@ -24,7 +24,7 @@ describe SignController do
     context 'with updateable sign' do
       before :each do
         @lyric = "We've come too far, To give up who we are."
-        mock_sign = mock(:update => true, :phrase => @lyric.upcase)
+        mock_sign = mock(:push => true, :phrase => @lyric.upcase)
         mock_sign.expects(:phrase=).with(@lyric)
         controller.stubs(:sign).returns(mock_sign)
       end
@@ -41,13 +41,21 @@ describe SignController do
 
     it 'should flash alert if cant save' do
       lyric = 'I came in like a wrecking ball'
-      mock_sign = mock(:update => false)
+      mock_sign = mock(:push => false)
       mock_sign.expects(:phrase=).with(lyric)
       controller.stubs(:sign).returns(mock_sign)
       put :phrase, {phrase:lyric}
       flash[:error].should == "Sorry, couldn't update sign"
     end
 
+  end
+
+  describe '#stop PUT /sign/stop(.:format)' do
+    it 'should tell effects manager to stop' do
+      Effects::Manager.expects(:stop)
+      put :stop
+      flash[:success].should == 'Effects manager stopped'
+    end
   end
 
 end

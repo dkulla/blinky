@@ -119,15 +119,26 @@ describe Letter do
         @letter.set(value: 'S', color: Color::RGB::Orange)
       end
 
-      [0,1,2,7,8,13,14,15].each do |n|
-        it{@letter.segments[n].color.should == Color::RGB::Orange}
+      it 'should recive color for correct segments' do
+        [0,1,2,7,8,13,14,15].each do |n|
+          @letter.segments[n].color.should == Color::RGB::Orange
+        end
       end
 
-      ((0..15).to_a - [0,1,2,7,8,13,14,15]).each do |n|
-        it{@letter.segments[n].color.should == Color::RGB::Black}
+      it 'should recieve no color for correct segments ' do
+        ((0..15).to_a - [0,1,2,7,8,13,14,15]).each do |n|
+          @letter.segments[n].color.should == Color::RGB::Black
+        end
       end
 
     end
   end
 
+  describe '#set_value' do
+    it 'should recive set with value' do
+      letter = Letter.new
+      letter.expects(:set).with(value:'B')
+      letter.set_value('B')
+    end
+  end
 end

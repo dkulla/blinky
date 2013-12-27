@@ -143,6 +143,10 @@ class Letter < ActiveRecord::Base
     end
   end
 
+  def set_value(value)
+    self.set(value:value)
+  end
+
   # Returns segment coresponding to the diagram above
   def segment_number(number)
     s = Array(segments.where(number:number)).first

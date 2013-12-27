@@ -14,6 +14,7 @@ class Sign < ActiveRecord::Base
   has_many :letters, :dependent => :destroy
 
   serialize :letter_order, Array
+  bitmask :effects, :as => [:scrolling]
 
   def init
     # Get letters without a set number
@@ -97,10 +98,10 @@ class Sign < ActiveRecord::Base
 
   # Saves and pushes update to sign
   #
-  def update
+  def push
     ok = self.save
-    update_letters  if ok
-    LedString.push! if ok
+    LedString.new.add_sign(self) if ok && LedString.new?
+    Effects::Manager.run(self) if ok
     ok
   end
 

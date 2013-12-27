@@ -11,7 +11,8 @@ gem 'jquery-rails'                # Use jquery as the JavaScript library
 gem 'jbuilder', '~> 1.2'          # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'anjlab-bootstrap-rails', '~> 3.0.2.0', :require => 'bootstrap-rails' # Bootstrap
 gem 'pi_piper', :git => 'git@github.com:bguest/pi_piper.git', :branch => 'stub-driver'
-gem 'color'
+gem 'color'               # Color
+gem 'bitmask_attributes'  # Bitmask
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby

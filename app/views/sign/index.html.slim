@@ -7,5 +7,7 @@ table.table
     tr
       =form_tag(phrase_sign_index_path, :method => :put) do
         td= text_field_tag :phrase, @phrase, class:'form-control'
-        td= submit_tag "Say It", class:'btn btn-primary'
+        td
+          =submit_tag "Say It", class:'btn btn-primary'
+          = link_to 'Stop', stop_sign_index_path, method: :put, class:'btn btn-danger'
 
