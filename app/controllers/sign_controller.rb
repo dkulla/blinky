@@ -2,6 +2,7 @@ class SignController < ApplicationController
 
   # sign_index GET /sign(.:format)
   def index
+    @sign = sign
     @phrase = sign.phrase
   end
 
@@ -23,10 +24,27 @@ class SignController < ApplicationController
     redirect_to sign_index_path
   end
 
+  #sign PATCH /sign/:id(.:format)
+  def update
+    sign.color = Color::RGB.from_html(sign_params[:color])
+    sign.effects = sign_params[:effects].keys.map(&:to_sym)
+    if sign.save
+      flash[:success] = 'Sign updated.'
+      redirect_to sign_index_path
+    else
+      flash[:error] = 'Error saving sign.'
+      render :index
+    end
+  end
+
 private
 
   def phrase_params
     params.require(:phrase)
+  end
+
+  def sign_params
+    params.require(:sign).permit(:color, {:effects => Sign.values_for_effects})
   end
 
 end

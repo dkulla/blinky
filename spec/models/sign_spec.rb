@@ -21,6 +21,11 @@ describe Sign do
     sign.letters.first.should == letter
   end
 
+  it 'should have color attribute' do
+    sign.color = Color::RGB::Red
+    sign.color.should == Color::RGB::Red
+  end
+
   describe '#add_letters' do
     let(:l1){Letter.new}
     let(:l2){Letter.new}

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 4) do
+ActiveRecord::Schema.define(version: 5) do
 
   create_table "letters", force: true do |t|
     t.integer  "number"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 4) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "effects"
+    t.string   "color"
   end
 
   add_index "signs", ["effects"], name: "index_signs_on_effects"

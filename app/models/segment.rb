@@ -20,7 +20,7 @@ class Segment < ActiveRecord::Base
   after_initialize :init
 
   def init
-    self.length  ||= 2
+    self.length  ||= 1
     self.led_string ||= LedString
   end
 

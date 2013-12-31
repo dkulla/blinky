@@ -90,9 +90,9 @@ describe LettersController do
 
   describe '#letters PUT /letters/reload(.:format)' do
 
-    it 'should create a new sign' do
-      put :reload
-      Sign.all.count.should == 1
+    before :each do
+      @sign = Sign.new
+      controller.stubs(:sign).returns(@sign)
     end
 
     it 'should create a new LedString' do
@@ -102,9 +102,7 @@ describe LettersController do
     end
 
     it 'should attempt to add sign to led string' do
-      sign = Sign.new
-      controller.stubs(:sign).returns(sign)
-      LedString.expects(:add_sign).with(sign)
+      LedString.expects(:add_sign).with(@sign)
       put :reload
     end
 

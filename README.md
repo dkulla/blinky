@@ -9,6 +9,10 @@ The goal is to build between 10 and 20 of these huge 16 segment displays. When t
 #Contact
 benguest@gmail.com
 
+#Code Climate
+[![Code Climate](https://codeclimate.com/github/bguest/blinky.png)](https://codeclimate.com/github/bguest/blinky)
+want to know more? Go here: https://codeclimate.com/github/bguest/blinky/
+
 #Raspberry Pi
 
 The following is a bunch of stuff needed to configure your raspberry pi with nginx and thin so that it can run a web server

@@ -7,16 +7,25 @@ describe SignController do
   end
 
   describe '#index GET /sign(.:format)' do
+
+    let(:a_sign){Sign.new(:phrase => 'What does the fox say')}
+    before do
+      controller.stubs(:sign).returns(a_sign)
+    end
+
     it 'returns http success' do
       get :index
       response.should be_success
     end
 
     it 'should assign a phrase' do
-      a_sign = Sign.new(:phrase => 'What does the fox say')
-      controller.stubs(:sign).returns(a_sign)
       get :index
       assigns[:phrase].should == 'WHAT DOES THE FOX SAY'
+    end
+
+    it 'should assign sign' do
+      get :index
+      assigns[:sign].should == a_sign
     end
   end
 
@@ -56,6 +65,50 @@ describe SignController do
       put :stop
       flash[:success].should == 'Effects manager stopped'
     end
+  end
+
+  describe '#update PATCH /sign/:id(.:format)' do
+
+    let(:sign){Sign.new}
+    let(:params) do
+      {
+          id:1,
+          sign:{
+              effects:{
+                  scrolling:  1,
+                  solid_color:1
+              },
+              color:'#ff0000'
+          }
+      }
+    end
+    before :each do
+      controller.stubs(:sign).returns(sign)
+    end
+
+    it 'should redirect to sign_index' do
+      put :update, params
+      response.should redirect_to sign_index_path
+    end
+
+    context 'when save fails' do
+      before { sign.stubs(:save).returns false}
+
+      it 'should flash approprate flash mesage' do
+        put :update, params
+        flash[:error].should == 'Error saving sign.'
+      end
+
+      it 'should render index' do
+        put :update, params
+        response.should render_template(:index)
+      end
+    end
+
+    it 'should attempt to update effects bitmask' do
+
+    end
+
   end
 
 end

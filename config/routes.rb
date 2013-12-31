@@ -1,6 +1,6 @@
 Blinky::Application.routes.draw do
 
-  resources :sign, :only => :index do
+  resources :sign, :only => [:index, :update] do
     collection do
       put 'phrase'
       put 'stop'

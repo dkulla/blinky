@@ -26,8 +26,8 @@ describe Segment do
       Segment.new(:length => 5).length.should == 5
     end
 
-    it 'should have default length 2' do
-      Segment.new().length.should == 2
+    it 'should have default length 1' do
+      Segment.new.length.should == 1
     end
   end
 

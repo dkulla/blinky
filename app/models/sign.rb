@@ -14,7 +14,8 @@ class Sign < ActiveRecord::Base
   has_many :letters, :dependent => :destroy
 
   serialize :letter_order, Array
-  bitmask :effects, :as => [:scrolling]
+  serialize :color, ColorSerializer
+  bitmask :effects, :as => [:scrolling, :solid_color]
 
   def init
     # Get letters without a set number
@@ -90,7 +91,7 @@ class Sign < ActiveRecord::Base
     s || Array(letters.select{|ll| ll.number == number}).first
   end
 
-  # Returns letters in order specifed by letter_order
+  # Returns letters in order specified by letter_order
   #
   def ordered_letters
     letter_order.collect{|n| letter_number(n)}
@@ -103,15 +104,6 @@ class Sign < ActiveRecord::Base
     LedString.new.add_sign(self) if ok && LedString.new?
     Effects::Manager.run(self) if ok
     ok
-  end
-
-  # Pushes updates to letters
-  #
-  def update_letters
-    LedString.new.add_sign(self) if LedString.new?
-    ordered_letters.each_with_index do |letter, idx|
-      letter.set(:value => phrase[idx])
-    end
   end
 
 end
