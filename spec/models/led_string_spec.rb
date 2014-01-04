@@ -64,9 +64,6 @@ describe LedString do
   end
 
   describe '#new?' do
-    it 'should return true if uninitialzied' do
-      LedString.new?.should be_true
-    end
 
     it{string.new.new?.should be_true}
 

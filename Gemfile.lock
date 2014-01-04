@@ -1,6 +1,6 @@
 GIT
-  remote: git@github.com:bguest/pi_piper.git
-  revision: e5288a149651def7defc9424967c8dcd40d85754
+  remote: https://github.com/bguest/pi_piper.git
+  revision: 79af39e42fb2284b923622fab13807c2e89ec04e
   branch: stub-driver
   specs:
     pi_piper (2.0.beta.11)

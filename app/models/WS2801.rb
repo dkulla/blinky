@@ -1,5 +1,4 @@
 class Color::RGB
-
   def to_a
     [red.to_i, green.to_i, blue.to_i]
   end

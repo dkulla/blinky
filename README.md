@@ -1,3 +1,5 @@
+[![Code Climate](https://codeclimate.com/github/bguest/blinky.png)](https://codeclimate.com/github/bguest/blinky) [![Build Status](https://travis-ci.org/bguest/blinky.png?branch=master)](https://travis-ci.org/bguest/blinky)
+
 #About
 
 This is the server side application used to control the 2014 Burning Man project "Segment 16". The server side application is a Rails 4 application that runs on nginx and thin. The application runs on a Raspberry Pi. The Raspberry Pi sends SPI signals to a string of WS2801 addressable multi colored LEDs. CAD Designs will be opensource as well as soon as the become available.
@@ -8,10 +10,6 @@ The goal is to build between 10 and 20 of these huge 16 segment displays. When t
 
 #Contact
 benguest@gmail.com
-
-#Code Climate
-[![Code Climate](https://codeclimate.com/github/bguest/blinky.png)](https://codeclimate.com/github/bguest/blinky)
-want to know more? Go here: https://codeclimate.com/github/bguest/blinky/
 
 #Raspberry Pi
 

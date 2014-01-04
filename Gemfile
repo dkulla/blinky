@@ -10,7 +10,7 @@ gem 'coffee-rails', '~> 4.0.0'    # Use CoffeeScript for .js.coffee assets and v
 gem 'jquery-rails'                # Use jquery as the JavaScript library
 gem 'jbuilder', '~> 1.2'          # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'anjlab-bootstrap-rails', '~> 3.0.2.0', :require => 'bootstrap-rails' # Bootstrap
-gem 'pi_piper', :git => 'git@github.com:bguest/pi_piper.git', :branch => 'stub-driver'
+gem 'pi_piper', :git => 'https://github.com/bguest/pi_piper.git', :branch => 'stub-driver'
 gem 'color'               # Color
 gem 'bitmask_attributes'  # Bitmask
 
@@ -31,9 +31,7 @@ group :test, :development do
 end
 
 group :test do
-  gem 'mocha', :require => false
   gem 'zeus', '0.13.4.pre2'
-  gem 'simplecov'
 end
 
 # Use ActiveModel has_secure_password

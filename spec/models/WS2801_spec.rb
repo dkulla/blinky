@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'WS2801'
 
 describe WS2801 do
 
