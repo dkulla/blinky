@@ -78,7 +78,8 @@ describe SignController do
                   scrolling:  1,
                   solid_color:1
               },
-              color:'#ff0000'
+              color:'#ff0000',
+              background_color:'#008000'
           }
       }
     end
@@ -89,6 +90,12 @@ describe SignController do
     it 'should redirect to sign_index' do
       put :update, params
       response.should redirect_to sign_index_path
+    end
+
+    it 'should set sign color' do
+      put :update, params
+      sign.color.should == Color::RGB::Red
+      sign.background_color.should == Color::RGB::Green
     end
 
     context 'when save fails' do

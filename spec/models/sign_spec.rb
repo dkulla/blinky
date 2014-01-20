@@ -17,8 +17,9 @@ describe Sign do
 
   describe 'relations and properties' do
     it{ should serialize(:color).as ColorSerializer }
+    it{ should serialize(:background_color).as ColorSerializer}
     it{ should serialize(:letter_order).as Array}
-    it{ should have_many :letters}
+    it{ should have_many(:letters)}
   end
 
   it 'should be able to have letters' do
@@ -47,6 +48,17 @@ describe Sign do
   end
 
   describe '#init' do
+
+    describe 'sets defaults' do
+      it 'should have default background color' do
+        Sign.new.background_color.should == Color::RGB::Black
+      end
+
+      it 'should have default color' do
+        Sign.new.color.should == Color::RGB::White
+      end
+    end
+
     context 'when adding letters directly' do
       let(:l1){Letter.new}
       let(:l2){Letter.new}

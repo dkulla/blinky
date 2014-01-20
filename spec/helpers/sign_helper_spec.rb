@@ -11,5 +11,28 @@ require 'spec_helper'
 #   end
 # end
 describe SignHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  describe '#sign_background_color' do
+    it 'should return background color in html' do
+      sign = Sign.new(:background_color => Color::RGB::Green)
+      helper.sign_background_color(sign).should == '#008000'
+    end
+
+    it 'should return blank if no background color' do
+      sign = stub(:background_color => nil)
+      helper.sign_background_color(sign).should == ''
+    end
+  end
+
+  describe '#sign_color' do
+    it 'should return background color in html' do
+      sign = Sign.new(:color => Color::RGB::Green)
+      helper.sign_color(sign).should == '#008000'
+    end
+
+    it 'should return blank if no background color' do
+      sign = stub(:color => nil)
+      helper.sign_color(sign).should == ''
+    end
+  end
 end

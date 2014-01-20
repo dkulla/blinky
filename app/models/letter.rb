@@ -42,7 +42,7 @@ class Letter < ActiveRecord::Base
   after_initialize :init
 
   belongs_to :sign
-  has_many :segments, :dependent => :destroy
+  has_many :segments, :dependent => :destroy, :autosave => true
 
   serialize :segment_order, Array
 
@@ -132,14 +132,10 @@ class Letter < ActiveRecord::Base
   end
 
   def set(opts = {})
-    value = opts[:value]; color = opts[:color] || Color::RGB::White
+    value = opts[:value]
     value_segments = CONVERSION[value.to_s.to_sym]
     segments.each do |s|
-      if value_segments.include?(s.number)
-        s.color = color
-      else
-        s.color = Color::RGB::Black
-      end
+      s.on = value_segments.include?(s.number)
     end
   end
 
@@ -147,10 +143,10 @@ class Letter < ActiveRecord::Base
     self.set(value:value)
   end
 
-  # Returns segment coresponding to the diagram above
+  # Returns segment corresponding to the diagram above
   def segment_number(number)
-    s = Array(segments.where(number:number)).first
-    s || Array(segments.select{|ss| ss.number == number}).first
+    s = Array(segments.select{|ss| ss.number == number}).first
+    s || Array(segments.where(number:number)).first
   end
 
   def ordered_segments

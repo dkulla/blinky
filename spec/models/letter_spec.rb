@@ -117,22 +117,22 @@ describe Letter do
   end
 
   describe '#set' do
-    context 'should set letter to selected color' do
+    context 'should set letter segments correctly' do
       before :each do
         @letter = Letter.new
         LedString.new.add_letters(@letter)
-        @letter.set(value: 'S', color: Color::RGB::Orange)
+        @letter.set(value: 'S')
       end
 
       it 'should recive color for correct segments' do
         [0,1,2,7,8,13,14,15].each do |n|
-          @letter.segments[n].color.should == Color::RGB::Orange
+          @letter.segments[n].on?.should be_true
         end
       end
 
       it 'should recieve no color for correct segments ' do
         ((0..15).to_a - [0,1,2,7,8,13,14,15]).each do |n|
-          @letter.segments[n].color.should == Color::RGB::Black
+          @letter.segments[n].off?.should be_true
         end
       end
 

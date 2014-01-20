@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 5) do
     t.datetime "updated_at"
     t.integer  "effects"
     t.string   "color"
+    t.string   "background_color"
   end
 
   add_index "signs", ["effects"], name: "index_signs_on_effects"

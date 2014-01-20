@@ -11,13 +11,18 @@
 
 class Sign < ActiveRecord::Base
   after_initialize :init
-  has_many :letters, :dependent => :destroy
+  has_many :letters, :dependent => :destroy, :autosave => true
 
   serialize :letter_order, Array
   serialize :color, ColorSerializer
+  serialize :background_color, ColorSerializer
   bitmask :effects, :as => [:scrolling, :solid_color]
 
   def init
+    # Set Defaults
+    self.color ||= Color::RGB::White
+    self.background_color ||= Color::RGB::Black
+
     # Get letters without a set number
     new_letters = letters.select{|l| l.number.nil? }
 
@@ -87,8 +92,8 @@ class Sign < ActiveRecord::Base
 
   # Returns letter coresponding to the diagram above
   def letter_number(number)
-    s = Array(letters.where(number:number)).first
-    s || Array(letters.select{|ll| ll.number == number}).first
+    s = Array(letters.select{|ll| ll.number == number}).first
+    s || Array(letters.where(number:number)).first
   end
 
   # Returns letters in order specified by letter_order
