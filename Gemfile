@@ -27,6 +27,7 @@ end
 group :test, :development do
   gem 'rspec-rails', '~> 2.4'
   gem "mocha", :require => false
+  gem 'shoulda-matchers'
   gem 'simplecov'
 end
 

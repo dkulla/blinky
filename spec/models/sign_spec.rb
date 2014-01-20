@@ -15,6 +15,12 @@ describe Sign do
 
   let(:sign){Sign.new}
 
+  describe 'relations and properties' do
+    it{ should serialize(:color).as ColorSerializer }
+    it{ should serialize(:letter_order).as Array}
+    it{ should have_many :letters}
+  end
+
   it 'should be able to have letters' do
     letter = Letter.new
     sign.letters << letter

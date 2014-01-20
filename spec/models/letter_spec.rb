@@ -22,6 +22,11 @@ describe Letter do
     l = Letter.new(:segments => [Segment.create(number:2)])
     l.segments.size.should == 16
   end
+  describe 'relations and properties' do
+    it{ should belong_to :sign }
+    it{ should have_many :segments }
+    it{ should serialize(:segment_order).as Array}
+  end
 
   describe '#segment_order' do
 

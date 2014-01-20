@@ -20,6 +20,11 @@ describe Segment do
   let(:s2){Segment.new(length: 3)}
   let(:leds){LedString.new()}
 
+  describe 'relations' do
+    it{ should belong_to :letter}
+    it{ should respond_to :led_string}
+  end
+
   describe '#length' do
 
     it "should know it's length" do

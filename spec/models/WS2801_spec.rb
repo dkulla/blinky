@@ -7,6 +7,12 @@ describe WS2801 do
     WS2801.any_instance.stubs(:to_piper)
   end
 
+  describe 'properties' do
+    it{ should respond_to :pixels}
+    it{ should respond_to :length}
+    it{ should respond_to :size}
+  end
+
   it 'should have default length of 1' do
     WS2801.new().length.should == 1
   end
