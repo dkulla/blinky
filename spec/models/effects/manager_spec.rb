@@ -29,6 +29,16 @@ describe Effects::Manager do
 
   end
 
+  describe '#thread' do
+    it 'should return the last thread' do
+      Effects::Manager.stubs(:run_iteration)
+      Effects::Manager.run(sign)
+      thr1 = Effects::Manager.thread
+      Effects::Manager.stop
+      Effects::Manager.dead_thread.should == thr1
+    end
+  end
+
   describe '#run' do
     it 'should call run iteration' do
       Effects::Manager.expects(:run_iteration).with(0).returns true
@@ -37,7 +47,7 @@ describe Effects::Manager do
       Effects::Manager.run(sign)
       sleep 0.15
       Effects::Manager.stop
-      Effects::Manager.thread.join
+      Effects::Manager.dead_thread.join
     end
   end
 
@@ -46,8 +56,8 @@ describe Effects::Manager do
       Effects::Manager.stubs(:run_iteration)
       Effects::Manager.run(sign)
       Effects::Manager.stop
-      Effects::Manager.thread.join
-      Effects::Manager.thread.alive?.should be_false
+      Effects::Manager.dead_thread.join
+      Effects::Manager.dead_thread.alive?.should be_false
     end
   end
 end
