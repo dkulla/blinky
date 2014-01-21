@@ -7,6 +7,9 @@ end
 unless zeus_running?
   require 'simplecov'
   SimpleCov.start 'rails'
+
+  require 'coveralls'
+  Coveralls.wear!
 end
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'

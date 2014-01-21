@@ -33,6 +33,7 @@ end
 
 group :test do
   gem 'zeus', '0.13.4.pre2'
+  gem 'coveralls', require: false
 end
 
 # Use ActiveModel has_secure_password
