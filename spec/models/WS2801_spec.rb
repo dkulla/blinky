@@ -14,7 +14,7 @@ describe WS2801 do
   end
 
   it 'should have default length of 1' do
-    WS2801.new().length.should == 1
+    WS2801.new.length.should == 1
   end
 
   it 'should be able to set length' do
@@ -42,5 +42,14 @@ describe WS2801 do
     leds.push_color( Color::RGB.new(0, 255, 20 ) )
     leds.to_a.should == [0, 255, 20, 255, 0, 0, 255, 0, 0]
   end
+
+  describe '#to_a' do
+    it 'should convert HSL colors' do
+      leds = WS2801.new(:length => 1)
+      leds.set_color(Color::HSL.new(0,100,50))
+      leds.to_a.should == [255, 0, 0]
+    end
+  end
+
 
 end

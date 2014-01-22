@@ -32,7 +32,7 @@ module Effects
     end
 
     def period
-      @period ||= 1
+      @period ||= 0.2
     end
 
     def run_iteration(clock)

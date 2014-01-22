@@ -14,15 +14,19 @@ table.table
 h2 Sign Attributes
 =form_for @sign do |f|
   h3 Effects
-  -Sign.values_for_effects.each do |eff|
-    .checkbox
-      =check_box_tag "sign[effects][#{eff}]", 'true', @sign.effects?(eff)
-      =label_tag "sign[effects][#{eff}]", "#{eff.to_s.titleize}"
-  div
-    =color_field_tag 'sign[color]', nil, :value => sign_color(@sign)
-    =f.label :color
-  div
-    =color_field_tag 'sign[background_color]', nil, :value => sign_background_color(@sign)
-    =f.label :background_color
-
-  =f.submit "Update Sign", class:'btn btn-primary'
+  .row
+    .col-md-2
+      -Sign.values_for_effects.each do |eff|
+        .checkbox
+          =check_box_tag "sign[effects][#{eff}]", 'true', @sign.effects?(eff)
+          =label_tag "sign[effects][#{eff}]", "#{eff.to_s.titleize}"
+    .col-md-2.solid-color
+      h4 Solid Color
+      div
+        =color_field_tag 'sign[color]', nil, :value => sign_color(@sign)
+        =f.label :color
+      div
+        =color_field_tag 'sign[background_color]', nil, :value => sign_background_color(@sign)
+        =f.label :background_color
+  .row
+    =f.submit "Update Sign", class:'btn btn-primary'

@@ -4,7 +4,7 @@ describe Effects::SolidColor do
 
   def run_setup
     LedString.new.add_sign(sign)
-    [1,2].each do |clk|
+    [1,11].each do |clk|
       Effects::Scrolling.run(sign,clk)
       Effects::SolidColor.run(sign,clk)
     end

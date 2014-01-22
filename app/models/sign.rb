@@ -16,7 +16,7 @@ class Sign < ActiveRecord::Base
   serialize :letter_order, Array
   serialize :color, ColorSerializer
   serialize :background_color, ColorSerializer
-  bitmask :effects, :as => [:scrolling, :solid_color]
+  bitmask :effects, :as => [:scrolling, :solid_color, :hue_fade]
 
   def init
     # Set Defaults

@@ -25,10 +25,12 @@ class Segment < ActiveRecord::Base
   end
 
   def color
-    led_string.color_at(start)
+    @color
+    #led_string.color_at(start)
   end
 
   def color=(color)
+    @color = color
     led_string.set_color color, range
   end
 
