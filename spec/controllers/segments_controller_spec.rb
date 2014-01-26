@@ -8,12 +8,19 @@ describe SegmentsController do
 
     before :each do
       @segment = Segment.new(length:10)
+      @letter = stub(:id => 52)
+      @segment.stubs(:letter).returns(@letter)
       Segment.stubs(:find).with('22').returns(@segment)
     end
 
     it 'should update segment length' do
       put :update, new_params
       @segment.length.should == 11
+    end
+
+    it 'should redirect to letter edit' do
+      put :update, new_params
+      should redirect_to edit_letter_path(@letter)
     end
 
     it "should let user know if can't update segment" do

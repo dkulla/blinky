@@ -1,4 +1,4 @@
-[![Code Climate](https://codeclimate.com/github/bguest/blinky.png)](https://codeclimate.com/github/bguest/blinky) [![Build Status](https://travis-ci.org/bguest/blinky.png?branch=master)](https://travis-ci.org/bguest/blinky) [![Coverage Status](https://coveralls.io/repos/bguest/blinky/badge.png)](https://coveralls.io/r/bguest/blinky)
+[![Code Climate](https://codeclimate.com/github/bguest/blinky.png)](https://codeclimate.com/github/bguest/blinky) [![Build Status](https://travis-ci.org/bguest/blinky.png?branch=master)](https://travis-ci.org/bguest/blinky) [![Coverage Status](https://coveralls.io/repos/bguest/blinky/badge.png)](https://coveralls.io/r/bguest/blinky) [![Dependency Status](https://gemnasium.com/bguest/blinky.png)](https://gemnasium.com/bguest/blinky)
 
 #About
 
