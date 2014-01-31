@@ -2,12 +2,12 @@ source 'https://rubygems.org'
 
 # You know like gems and stuff
 gem 'rails',        '~>4.0'       # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'sqlite3'                     # Use sqlite3 as the database for Active Record
+gem 'sqlite3',      '~>1.3'       # Use sqlite3 as the database for Active Record
 gem 'sass-rails',   '~>4.0'       # Use SCSS for stylesheets
-gem 'slim'                        # Slim Templates
+gem 'slim',         '~>2.0'       # Slim Templates
 gem 'uglifier',     '~>2.4'       # Use Uglifier as compressor for JavaScript assets
 gem 'coffee-rails', '~>4.0'       # Use CoffeeScript for .js.coffee assets and views
-gem 'jquery-rails'                # Use jquery as the JavaScript library
+gem 'jquery-rails', '~>3.1'       # Use jquery as the JavaScript library
 gem 'jbuilder',     '~>2.0'       # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'turbolinks',   '~>2.2'       # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'anjlab-bootstrap-rails', '~> 3.0', :require => 'bootstrap-rails' # Bootstrap
