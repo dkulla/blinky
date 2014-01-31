@@ -14,6 +14,7 @@ gem 'anjlab-bootstrap-rails', '~> 3.0', :require => 'bootstrap-rails' # Bootstra
 gem 'pi_piper', :git => 'https://github.com/bguest/pi_piper.git', :branch => 'stub-driver'
 gem 'color',              '~>1.4' # Color
 gem 'bitmask_attributes', '~>1.0' # Bitmask
+gem 'annotate', "~>2.6.0"
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -47,6 +48,5 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-rvm'
   gem 'capistrano-bundler'
-  gem 'annotate', "~>2.6.0"
 end
 

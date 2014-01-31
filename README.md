@@ -13,6 +13,15 @@ benguest@gmail.com
 
 #Raspberry Pi
 
+## Connections
+
+| RaspberryPi  | Lead Wire | SH - 3535 -  WS2801 | 5V WS2801-16P STRIP |
+|:-------------|:----------|:--------------------|:--------------------|
+| (Power)      | RED       | +12V - Red          | 5V       - Black    |
+| CLK (Clock)  | BLACK     | CLK  - White        | CI -> CO - Green    |
+| MOSI         | GREEN     | DAT  - Green        | DI -> DO - Red      |
+| GND (Ground) | BLACK     | GND  - Blue         | GND      - Blue     |
+
 The following is a bunch of stuff needed to configure your raspberry pi with nginx and thin so that it can run a web server
 
 ssh pi@raspberrypi.local
@@ -79,4 +88,4 @@ sudo chmod -R g+rw /sys/class/gpio
 
 sudo ./a.out
 
-sudo shutdown
+sudo shutdown -h now

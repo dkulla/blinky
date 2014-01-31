@@ -1,15 +1,15 @@
 set :application, 'blinky'
-set :repo_url, 'git@bitbucket.org:Intentss/blinky.git'
+set :repo_url, 'git@github.com:bguest/blinky.git'
 
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
 set :deploy_to, '/var/www/blinky'
 set :scm, :git
-set :deploy_via, :copy
+#set :deploy_via, :copy
 #set :deploy_via, :remote_cache
 set :repository,  "."
 set :local_repository, "."
-set :branch, "staging"
+set :branch, "master"
 #set :rvm_ruby_string, 'ruby-2.0.0-p247'
 #set :rvm_bin_path, "/usr/local/rvm/bin"
 #set :git_shallow_clone, 1  # Won't work for branch other than master
