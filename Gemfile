@@ -40,10 +40,10 @@ end
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use thin as the app server
-gem 'thin'
+gem 'thin', '~>1.6'
 
 group :development do
-  gem 'capistrano', '~> 3.0.0'
+  gem 'capistrano', '~> 3.0'
   gem 'capistrano-rails'
   gem 'capistrano-rvm'
   gem 'capistrano-bundler'

@@ -37,7 +37,7 @@ namespace :deploy do
       execute 'sudo /etc/init.d/nginx restart'
     end
   end
-
+  after :finished, 'deploy:restart'
 
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
