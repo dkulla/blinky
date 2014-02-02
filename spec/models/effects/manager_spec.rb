@@ -18,7 +18,8 @@ describe Effects::Manager do
     end
 
     it 'should run scrolling effect' do
-      Effects::Scrolling.expects(:run).with(sign,0)
+      options = {sign:sign, clock:0, needs_update: false}
+      Effects::Scrolling.expects(:run).with(options)
       Effects::Manager.run_iteration(0)
     end
 

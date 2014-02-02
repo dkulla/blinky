@@ -5,8 +5,9 @@ describe Effects::SolidColor do
   def run_setup
     LedString.new.add_sign(sign)
     [1,11].each do |clk|
-      Effects::Scrolling.run(sign,clk)
-      Effects::SolidColor.run(sign,clk)
+      options = {sign: sign, clock:clk, needs_update:false}
+      Effects::Scrolling.run(options)
+      Effects::SolidColor.run(options)
     end
   end
 

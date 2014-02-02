@@ -1,6 +1,8 @@
 module Effects
   module SolidColor extend self
-    def run(sign, clock)
+    def run(options)
+      sign = options[:sign]
+      clock = options[:clock]
       segs = sign.letters.collect(&:segments).flatten
       segs.each do |seg|
         seg.color= (seg.on? ? sign.color : sign.background_color)

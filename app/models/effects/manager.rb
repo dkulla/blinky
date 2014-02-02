@@ -36,12 +36,13 @@ module Effects
     end
 
     def run_iteration(clock)
+      options = {sign: sign, clock: clock, needs_update:false}
       ActiveRecord::Base.connection_pool.with_connection do
         sign.effects.each do |effect|
-          ('Effects::' + effect.to_s.camelize).constantize.run(sign, clock)
+          ('Effects::' + effect.to_s.camelize).constantize.run(options)
         end
       end
-      LedString.push!
+      LedString.push! if options[:needs_update]
     end
 
   end

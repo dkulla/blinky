@@ -8,9 +8,14 @@ describe Effects::HueFade do
     before :each do
       LedString.new.add_sign(sign)
       [10,180].each do |clk|
-        Effects::Scrolling.run(sign,clk)
-        Effects::HueFade.run(sign,clk)
+        @options = {sign: sign, clock:clk, needs_update:false}
+        Effects::Scrolling.run(@options)
+        Effects::HueFade.run(@options)
       end
+    end
+
+    it 'should need update' do
+      @options[:needs_update].should == true
     end
 
     it 'should set on segments the correct hue' do

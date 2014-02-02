@@ -29,14 +29,26 @@ module Effects
       @phrase = nil
     end
 
-    def run(sign, clock)
+    def run(options)
       self.reset
-      @sign = sign
+      clock = @clock = options[:clock]
+      @sign = options[:sign]
       clock = 0 if sign.phrase.size <= sign.letters.size
       sign.ordered_letters.each_with_index do |letter, idx|
         curr_idx = (idx+(clock/cycles).floor)%phrase.size
         letter.set_value(phrase[curr_idx])
       end
+      options[:needs_update] ||= needs_update
+    end
+
+  private
+    # Returns true for false depending on if sing needs update
+    #
+    def needs_update
+      return true if @clock == 0
+      return true if sign.phrase.size > sign.letters.size && @clock%cycles == 0
+
+      false
     end
   end
 end
