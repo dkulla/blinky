@@ -69,51 +69,70 @@ describe SignController do
 
   describe '#update PATCH /sign/:id(.:format)' do
 
-    let(:sign){Sign.new}
-    let(:params) do
-      {
+    context 'with sign that has effects' do
+      let(:sign){Sign.new}
+      let(:params) do
+        {
           id:1,
           sign:{
-              effects:{
-                  scrolling:  1,
-                  solid_color:1
-              },
-              color:'#ff0000',
-              background_color:'#008000'
+            effects:{
+              scrolling:  1,
+              solid_color:1
+            },
+            color:'#ff0000',
+            background_color:'#008000',
+            fade_time:'234'
           }
-      }
-    end
-    before :each do
-      controller.stubs(:sign).returns(sign)
-    end
-
-    it 'should redirect to sign_index' do
-      put :update, params
-      response.should redirect_to sign_index_path
-    end
-
-    it 'should set sign color' do
-      put :update, params
-      sign.color.should == Color::RGB::Red
-      sign.background_color.should == Color::RGB::Green
-    end
-
-    context 'when save fails' do
-      before { sign.stubs(:save).returns false}
-
-      it 'should flash approprate flash mesage' do
-        put :update, params
-        flash[:error].should == 'Error saving sign.'
+        }
+      end
+      before :each do
+        controller.stubs(:sign).returns(sign)
       end
 
-      it 'should render index' do
+      it 'should redirect to sign_index' do
         put :update, params
-        response.should render_template(:index)
+        response.should redirect_to sign_index_path
+      end
+
+      it 'should set sign color' do
+        put :update, params
+        sign.color.should == Color::RGB::Red
+        sign.background_color.should == Color::RGB::Green
+      end
+
+      it 'should set sign fade_time' do
+        put :update, params
+        sign.fade_time.should == 234
+      end
+
+      context 'when save fails' do
+        before { sign.stubs(:save).returns false}
+
+        it 'should flash approprate flash mesage' do
+          put :update, params
+          flash[:error].should == 'Error saving sign.'
+        end
+
+        it 'should render index' do
+          put :update, params
+          response.should render_template(:index)
+        end
+      end
+
+      it 'should attempt to update effects bitmask' do
+
       end
     end
 
-    it 'should attempt to update effects bitmask' do
+    context 'with sign with no effects' do
+      let(:sign){Sign.new}
+      let(:params) do
+        {id:1, sign:{color:'#ff0000', background_color:'#008000'}}
+      end
 
+      it 'should not blow up' do
+        expect{put :update, params}.not_to raise_error
+      end
     end
 
   end

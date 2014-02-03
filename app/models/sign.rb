@@ -2,11 +2,19 @@
 #
 # Table name: signs
 #
-#  id           :integer          not null, primary key
-#  phrase       :text
-#  letter_order :text
-#  created_at   :datetime
-#  updated_at   :datetime
+#  id               :integer          not null, primary key
+#  phrase           :text
+#  letter_order     :text
+#  created_at       :datetime
+#  updated_at       :datetime
+#  effects          :integer
+#  color            :string(255)
+#  background_color :string(255)
+#  fade_time        :float
+#
+# Indexes
+#
+#  index_signs_on_effects  (effects)
 #
 
 class Sign < ActiveRecord::Base
@@ -65,6 +73,11 @@ class Sign < ActiveRecord::Base
     super str.upcase
   end
 
+  # Fade Cycle Time for sign effects that invlove fadeing from one color to another
+  #
+  def fade_time
+    super || 72
+  end
   # Adds letters to the sign
   #
   # @example

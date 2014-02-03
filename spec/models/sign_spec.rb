@@ -2,11 +2,19 @@
 #
 # Table name: signs
 #
-#  id           :integer          not null, primary key
-#  phrase       :text
-#  letter_order :text
-#  created_at   :datetime
-#  updated_at   :datetime
+#  id               :integer          not null, primary key
+#  phrase           :text
+#  letter_order     :text
+#  created_at       :datetime
+#  updated_at       :datetime
+#  effects          :integer
+#  color            :string(255)
+#  background_color :string(255)
+#  fade_time        :float
+#
+# Indexes
+#
+#  index_signs_on_effects  (effects)
 #
 
 require 'spec_helper'
@@ -47,6 +55,11 @@ describe Sign do
     end
   end
 
+  describe '#fade_time' do
+    it 'should default to 72 seconds' do
+      sign.fade_time.should == 72
+    end
+  end
   describe '#init' do
 
     describe 'sets defaults' do

@@ -26,9 +26,7 @@ class SignController < ApplicationController
 
   #sign PATCH /sign/:id(.:format)
   def update
-    sign.color =             Color::RGB.from_html(sign_params[:color])
-    sign.background_color =  Color::RGB.from_html(sign_params[:background_color])
-    sign.effects = sign_params[:effects].keys.map(&:to_sym)
+    Form::Sign.update(sign, sign_params)
     if sign.save
       flash[:success] = 'Sign updated.'
       redirect_to sign_index_path
@@ -45,7 +43,10 @@ private
   end
 
   def sign_params
-    params.require(:sign).permit(:color, :background_color, {:effects => Sign.values_for_effects})
+    params.require(:sign).permit(:color,
+                                 :background_color,
+                                 :fade_time,
+                                 {:effects => Sign.values_for_effects})
   end
 
 end

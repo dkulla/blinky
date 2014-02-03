@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 5) do
+ActiveRecord::Schema.define(version: 6) do
 
   create_table "letters", force: true do |t|
     t.integer  "number"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 5) do
     t.integer  "effects"
     t.string   "color"
     t.string   "background_color"
+    t.float    "fade_time"
   end
 
   add_index "signs", ["effects"], name: "index_signs_on_effects"
