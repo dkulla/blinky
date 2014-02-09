@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/bguest/pi_piper.git
-  revision: 79af39e42fb2284b923622fab13807c2e89ec04e
-  branch: stub-driver
+  revision: 1359bbe02025c1366b02dde19659930a1d2d609c
+  branch: develop
   specs:
     pi_piper (2.0.beta.11)
       eventmachine (= 1.0.3)

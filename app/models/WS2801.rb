@@ -78,15 +78,15 @@ class WS2801
   end
 
   def push!
-    #Platform.driver.ada_spi_out(@pixels.collect(&:to_a).flatten) # if ada_spi_out worked
     array = self.to_a
     to_piper(array)
   end
 
   def to_piper(array)
-    PiPiper::Spi.begin do
-      write array
-    end
+    #PiPiper::Spi.begin do
+    #  write array
+    #end
+    PiPiper::Spi.spidev_out(array)
   end
 
 end

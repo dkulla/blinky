@@ -12,7 +12,7 @@ gem 'jquery-rails', '~>3.1'       # Use jquery as the JavaScript library
 gem 'jbuilder',     '~>2.0'       # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'turbolinks',   '~>2.2'       # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'anjlab-bootstrap-rails', '~> 3.0', :require => 'bootstrap-rails' # Bootstrap
-gem 'pi_piper', :git => 'https://github.com/bguest/pi_piper.git', :branch => 'stub-driver'
+gem 'pi_piper', :git => 'https://github.com/bguest/pi_piper.git', :branch => 'develop'
 gem 'color',              '~>1.4' # Color
 gem 'bitmask_attributes', '~>1.0' # Bitmask
 gem 'annotate', "~>2.6.0"
