@@ -2,7 +2,8 @@ source 'https://rubygems.org'
 
 # You know like gems and stuff
 gem 'rails',        '~>4.0'       # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'sqlite3',      '~>1.3'       # Use sqlite3 as the database for Active Record
+#gem 'sqlite3',      '~>1.3'       # Use sqlite3 as the database for Active Record
+gem 'pg',           '~>0.17.1'    # Use postgres
 gem 'sass-rails',   '~>4.0'       # Use SCSS for stylesheets
 gem 'slim',         '~>2.0'       # Slim Templates
 gem 'uglifier',     '~>2.4'       # Use Uglifier as compressor for JavaScript assets

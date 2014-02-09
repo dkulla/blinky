@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 6) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "letters", force: true do |t|
     t.integer  "number"
     t.text     "segment_order"
@@ -21,7 +24,7 @@ ActiveRecord::Schema.define(version: 6) do
     t.datetime "updated_at"
   end
 
-  add_index "letters", ["sign_id"], name: "index_letters_on_sign_id"
+  add_index "letters", ["sign_id"], name: "index_letters_on_sign_id", using: :btree
 
   create_table "segments", force: true do |t|
     t.integer "length"
@@ -29,7 +32,7 @@ ActiveRecord::Schema.define(version: 6) do
     t.integer "letter_id"
   end
 
-  add_index "segments", ["letter_id"], name: "index_segments_on_letter_id"
+  add_index "segments", ["letter_id"], name: "index_segments_on_letter_id", using: :btree
 
   create_table "signs", force: true do |t|
     t.text     "phrase"
@@ -42,6 +45,6 @@ ActiveRecord::Schema.define(version: 6) do
     t.float    "fade_time"
   end
 
-  add_index "signs", ["effects"], name: "index_signs_on_effects"
+  add_index "signs", ["effects"], name: "index_signs_on_effects", using: :btree
 
 end
