@@ -78,6 +78,12 @@ class Sign < ActiveRecord::Base
   def fade_time
     super || 72
   end
+
+  # Tempo of the display in beats/minute default is 60
+  def tempo
+    super || 60
+  end
+
   # Adds letters to the sign
   #
   # @example

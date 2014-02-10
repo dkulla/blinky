@@ -117,6 +117,13 @@ describe Letter do
   end
 
   describe '#set' do
+
+    it "should not explode if you try to set a letter that it doesn't know about" do
+      letter = Letter.new
+      LedString.new.add_letters(letter)
+      expect{letter.set_value('!')}.not_to raise_error
+    end
+
     context 'should set letter segments correctly' do
       before :each do
         @letter = Letter.new
@@ -145,5 +152,6 @@ describe Letter do
       letter.expects(:set).with(value:'B')
       letter.set_value('B')
     end
+
   end
 end

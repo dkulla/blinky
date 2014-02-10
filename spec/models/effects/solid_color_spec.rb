@@ -4,8 +4,9 @@ describe Effects::SolidColor do
 
   def run_setup
     LedString.new.add_sign(sign)
-    [1,11].each do |clk|
-      options = {sign: sign, clock:clk, needs_update:false}
+    [0,2].each do |time|
+      clock = (time*5).floor
+      options = {sign: sign, clock:clock, time:time, needs_update:false}
       Effects::Scrolling.run(options)
       Effects::SolidColor.run(options)
     end

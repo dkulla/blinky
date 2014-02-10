@@ -20,6 +20,11 @@ h2 Sign Attributes
         .checkbox
           =check_box_tag "sign[effects][#{eff}]", 'true', @sign.effects?(eff)
           =label_tag "sign[effects][#{eff}]", "#{eff.to_s.titleize}"
+    .col-md-2
+      h4 Scrolling
+      .form-inline.form-group
+        =f.label :tempo, 'Tempo (Beats / Minute)'
+        =f.text_field :tempo, value:@sign.tempo, class:'form-control'
     .col-md-2.solid-color
       h4 Solid Color
       div

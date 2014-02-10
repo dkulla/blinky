@@ -46,6 +46,7 @@ private
     params.require(:sign).permit(:color,
                                  :background_color,
                                  :fade_time,
+                                 :tempo,
                                  {:effects => Sign.values_for_effects})
   end
 

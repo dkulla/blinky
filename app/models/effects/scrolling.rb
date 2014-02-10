@@ -27,15 +27,23 @@ module Effects
 
     def reset
       @phrase = nil
+      @step_number = nil
+    end
+
+    # Number scrolling steps that have been taken
+    #
+    def step_number
+      @step_number ||= (@time.to_f/60.0*sign.tempo).floor
     end
 
     def run(options)
       self.reset
-      clock = @clock = options[:clock]
+      @clock = options[:clock]
       @sign = options[:sign]
-      clock = 0 if sign.phrase.size <= sign.letters.size
+      @time = options.fetch(:time){0}
+      @step_number = 0 if sign.phrase.size <= sign.letters.size
       sign.ordered_letters.each_with_index do |letter, idx|
-        curr_idx = (idx+(clock/cycles).floor)%phrase.size
+        curr_idx = (idx+step_number)%phrase.size
         letter.set_value(phrase[curr_idx])
       end
       options[:needs_update] ||= needs_update
@@ -46,7 +54,7 @@ module Effects
     #
     def needs_update
       return true if @clock == 0
-      return true if sign.phrase.size > sign.letters.size && @clock%cycles == 0
+      return true if sign.phrase.size > sign.letters.size && @time%(60/sign.tempo) < Manager.period - 0.001
 
       false
     end

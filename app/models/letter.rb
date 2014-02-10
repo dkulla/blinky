@@ -133,7 +133,7 @@ class Letter < ActiveRecord::Base
 
   def set(opts = {})
     value = opts[:value]
-    value_segments = CONVERSION[value.to_s.to_sym]
+    value_segments = CONVERSION.fetch(value.to_s.to_sym){[]}
     segments.each do |s|
       s.on = value_segments.include?(s.number)
     end

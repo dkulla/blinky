@@ -11,6 +11,7 @@ describe Form::Sign do
         color: '#ff0000',
         background_color: '#008000',
         fade_time: '234',
+        tempo: '128',
         effects:{
           scrolling:  1,
           solid_color:1
@@ -24,6 +25,7 @@ describe Form::Sign do
       sign.color.should ==            Color::RGB::Red
       sign.background_color.should == Color::RGB::Green
       sign.fade_time.should ==        234.0
+      sign.tempo.should ==            128.0
       sign.effects.should ==          [:scrolling, :solid_color]
     end
 

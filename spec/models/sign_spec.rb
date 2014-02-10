@@ -60,6 +60,7 @@ describe Sign do
       sign.fade_time.should == 72
     end
   end
+
   describe '#init' do
 
     describe 'sets defaults' do
@@ -164,6 +165,12 @@ describe Sign do
         it{sign.letter_number(n).number.should == n}
       end
       [2,3].each{|n| it{ expect(sign.letter_number(n)).to be_nil}}
+    end
+  end
+
+  describe '#tempo' do
+    it 'should default to 60' do
+      Sign.new.tempo.should == 60
     end
   end
 
