@@ -4,6 +4,7 @@ module LedString
   attr_reader :segments
 
   def new
+    Array(@segments).each{|s| s.led_string = nil}
     @segments = []
     @string = nil
     self

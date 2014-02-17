@@ -4,6 +4,7 @@ describe Effects::HueFade do
 
   def go_to_cycle(cycle)
     LedString.new.add_sign(sign)
+    Effects::Manager.period = 0.2
     [10,cycle].each do |clk|
       @options = {sign: sign, clock:clk, needs_update:false}
       Effects::Scrolling.run(@options)
