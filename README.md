@@ -22,6 +22,11 @@ benguest@gmail.com
 | MOSI         | GREEN     | DAT  - Green        | DI -> DO - Red      |
 | GND (Ground) | BLACK     | GND  - Blue         | GND      - Blue     |
 
+## TODO
+
+1. Add reset button next to sign that turns off all leds
+2. Update running sign when update sign effects
+
 The following is a bunch of stuff needed to configure your raspberry pi with nginx and thin so that it can run a web server
 
 ssh pi@raspberrypi.local
