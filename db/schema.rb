@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 7) do
+ActiveRecord::Schema.define(version: 8) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "instructions", force: true do |t|
+    t.integer  "sequence_id"
+    t.integer  "number"
+    t.text     "phrase"
+    t.integer  "effects"
+    t.string   "color"
+    t.string   "background_color"
+    t.float    "fade_time"
+    t.float    "tempo"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "letters", force: true do |t|
     t.integer  "number"
