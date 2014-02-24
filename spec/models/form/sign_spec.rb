@@ -1,3 +1,23 @@
+# == Schema Information
+#
+# Table name: signs
+#
+#  id               :integer          not null, primary key
+#  phrase           :text
+#  letter_order     :text
+#  created_at       :datetime
+#  updated_at       :datetime
+#  effects          :integer
+#  color            :string(255)
+#  background_color :string(255)
+#  fade_time        :float
+#  tempo            :float
+#
+# Indexes
+#
+#  index_signs_on_effects  (effects)
+#
+
 
 require 'spec_helper'
 

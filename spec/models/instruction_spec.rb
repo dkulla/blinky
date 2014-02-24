@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: instructions
+#
+#  id               :integer          not null, primary key
+#  sequence_id      :integer
+#  number           :integer
+#  phrase           :text
+#  effects          :integer
+#  color            :string(255)
+#  background_color :string(255)
+#  fade_time        :float
+#  tempo            :float
+#  created_at       :datetime
+#  updated_at       :datetime
+#
+
 require 'spec_helper'
 
 describe Instruction do
@@ -24,7 +41,7 @@ describe Instruction do
 
     describe 'sets defaults' do
       it 'should have default background color' do
-        Instruction.new.background_color.should == Color::RGB::Black
+        instruction.background_color.should == Color::RGB::Black
       end
 
       it 'should have default color' do

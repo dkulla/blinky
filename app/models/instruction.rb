@@ -1,4 +1,22 @@
+# == Schema Information
+#
+# Table name: instructions
+#
+#  id               :integer          not null, primary key
+#  sequence_id      :integer
+#  number           :integer
+#  phrase           :text
+#  effects          :integer
+#  color            :string(255)
+#  background_color :string(255)
+#  fade_time        :float
+#  tempo            :float
+#  created_at       :datetime
+#  updated_at       :datetime
+#
+
 class Instruction < ActiveRecord::Base
+  after_initialize :init
 
   serialize :color, ColorSerializer
   serialize :background_color, ColorSerializer
@@ -6,7 +24,6 @@ class Instruction < ActiveRecord::Base
 
   def init
     # Set Defaults
-    binding.pry
     self.color ||= Color::RGB::White
     self.background_color ||= Color::RGB::Black
   end

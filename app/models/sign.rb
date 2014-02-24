@@ -11,6 +11,7 @@
 #  color            :string(255)
 #  background_color :string(255)
 #  fade_time        :float
+#  tempo            :float
 #
 # Indexes
 #

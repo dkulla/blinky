@@ -9,6 +9,7 @@ class CreateInstructions < ActiveRecord::Migration
       t.string  :background_color
       t.float   :fade_time
       t.float   :tempo
+      t.float   :duration
 
       t.timestamps
     end

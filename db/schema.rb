@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 8) do
     t.string   "background_color"
     t.float    "fade_time"
     t.float    "tempo"
+    t.float    "duration"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
