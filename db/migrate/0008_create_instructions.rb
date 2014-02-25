@@ -13,5 +13,8 @@ class CreateInstructions < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :instructions, :sequence_id
+    add_index :instructions, :effects
   end
 end

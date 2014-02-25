@@ -30,6 +30,9 @@ ActiveRecord::Schema.define(version: 8) do
     t.datetime "updated_at"
   end
 
+  add_index "instructions", ["effects"], name: "index_instructions_on_effects", using: :btree
+  add_index "instructions", ["sequence_id"], name: "index_instructions_on_sequence_id", using: :btree
+
   create_table "letters", force: true do |t|
     t.integer  "number"
     t.text     "segment_order"
