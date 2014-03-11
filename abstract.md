@@ -1,4 +1,3 @@
 # Raspberry Pi on Rails: A Burning Man Love Story
-Ruby can do a lot of things, In this talk I'll expain how Ruby on Rails
-is being run on a Raspberry Pi to easly control electronics for a
-Burning Man art project. 
+People don't typically think of Ruby when it comes to embedded Linux development boards like Raspberry Pi and BeagleBone, but it is indeed possible to run the full Rails stack on such systems and use that micro server to interact with the physical world.
+In this talk I'll show how Rails and Raspberry Pi are being used to create a simple interface for a Burning Man art project.  I'll cover the pieces I used to get rails running on Pi, contributions to the pi_piper gem, software design decisions, hardware design and interaction, issues, and possibilities for improvement.
